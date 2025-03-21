@@ -1,24 +1,24 @@
 package com.gestorVendas.model;
 
 public class Categoria {
-    private long id;
+    private Long id;
     private String nome;
     private String descricao;
 
     public Categoria() {
     }
 
-    public Categoria(long id, String nome, String descricao) {
-        this.id = id;
+    public Categoria(Long id, String nome, String descricao) {
+        //this.id = id;
         this.nome = nome;
         this.descricao = descricao;
     }
 
     public long getId() {
-        return id;
+       return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -68,7 +68,7 @@ public class Usuario {
         this.perfil = perfil;
     }
 
-    public boolean getEstado() {
+    public boolean isEstado() {
         return estado;
     }
 
