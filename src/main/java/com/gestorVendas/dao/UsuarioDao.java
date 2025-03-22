@@ -3,6 +3,7 @@ package com.gestorVendas.dao;
 import com.gestorVendas.model.Perfil;
 import com.gestorVendas.model.Usuario;
 import com.gestorVendas.util.ConexaoMysql;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -52,9 +53,12 @@ public class UsuarioDao {
     }
 
     private void preencherValoresPreperedStatement(PreparedStatement preparedStatement, Usuario usuario) throws SQLException {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        String senhaCrypto = passwordEncoder.encode(usuario.getSenha());
         preparedStatement.setString(1, usuario.getNome());
         preparedStatement.setString(2, usuario.getUsuario());
-        preparedStatement.setString(3, usuario.getSenha());
+        preparedStatement.setString(3, senhaCrypto);
         preparedStatement.setString(4, usuario.getPerfil().name());
         preparedStatement.setBoolean(5, usuario.isEstado());
         if(usuario.getId() != 0){

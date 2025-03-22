@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 public class UsuarioTest {
     public static void main(String[] args){
-        Usuario usuario = new Usuario(0L, "Marcos", "123", "Desconhecid", Perfil.ADMIN, LocalDateTime.MIN, LocalDateTime.MIN);
+        Usuario usuario = new Usuario(1, "Marcos", "1234", "Fallenky", Perfil.ADMIN, LocalDateTime.MIN, LocalDateTime.MIN);
 
         UsuarioDao usuarioDao = new UsuarioDao();
 
