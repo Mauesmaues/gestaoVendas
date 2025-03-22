@@ -28,7 +28,7 @@ public class UsuarioDao {
             PreparedStatement preparedStatement = conexao.conectar().prepareStatement(sql);
             preencherValoresPreperedStatement(preparedStatement, usuario);
             int resultado = preparedStatement.executeUpdate();
-            return resultado == 1 ? "Usuario adicionado com sucesso" : "Nao foi possivel adicionar usuario";
+            return resultado == 1 ? "Usuario atualizado com sucesso" : "Nao foi possivel atualizar usuario";
         }catch(SQLException e){
             return String.format("Error %s",  e.getMessage());
         }
@@ -36,11 +36,16 @@ public class UsuarioDao {
 
     private String adicionar(Usuario usuario) {
         String sql = "INSERT INTO usuario (nome, usuario, senha, perfil, estado) VALUES (?,?,?,?,?)";
+
+        Usuario usuarioTemp = buscarUsuarioPeloUsuario(usuario.getUsuario());
+        if (usuarioTemp != null) {
+            return String.format("Error: username %s ja existe no banco de dados", usuario.getUsuario());
+        }
         try{
             PreparedStatement preparedStatement = conexao.conectar().prepareStatement(sql);
             preencherValoresPreperedStatement(preparedStatement, usuario);
             int resultado = preparedStatement.executeUpdate();
-            return resultado == 1 ? "Usuario editado com sucesso" : "Nao foi possivel editar usuario";
+            return resultado == 1 ? "Usuario adicionado com sucesso" : "Nao foi possivel adicionar usuario";
         }catch(SQLException e){
             return String.format("Error %s",  e.getMessage());
         }
@@ -84,5 +89,33 @@ public class UsuarioDao {
         usuario.setUltimoLogin(result.getObject("ultimo login", LocalDateTime.class));
 
         return usuario;
+    }
+
+    public Usuario buscarUsuarioPeloID(Long id){
+        String sql = String.format("SELECT * FROM usuario WHERE id = %d", id);
+        try{
+            ResultSet result = conexao.conectar().prepareStatement(sql).executeQuery();
+            if(result.next()){
+                return getUsuario(result);
+            }
+        } catch(SQLException e){
+            System.out.println("Error" + e.getMessage());
+        }
+
+        return null;
+    }
+
+    public Usuario buscarUsuarioPeloUsuario(String usuario){
+        String sql = String.format("SELECT * FROM usuario WHERE id = '%s'", usuario);
+        try{
+            ResultSet result = conexao.conectar().prepareStatement(sql).executeQuery();
+            if(result.next()){
+                return getUsuario(result);
+            }
+        } catch(SQLException e){
+            System.out.println("Error" + e.getMessage());
+        }
+
+        return null;
     }
 }
