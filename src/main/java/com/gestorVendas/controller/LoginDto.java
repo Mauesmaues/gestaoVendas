@@ -3,7 +3,6 @@ package com.gestorVendas.controller;
 public class LoginDto {
     private String usuario;
     private String senha;
-
     public String getSenha() {
         return senha;
     }

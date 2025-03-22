@@ -3,6 +3,7 @@ package com.gestorVendas;
 import com.gestorVendas.model.Categoria;
 import com.gestorVendas.util.Conexao;
 import com.gestorVendas.util.ConexaoMysql;
+import com.gestorVendas.view.Screan;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-
+        new Screan();
         String sql = "Select * from categoria"; // codigo sql para ser inserido
 
         ConexaoMysql conexao = new ConexaoMysql(); // instancia da conexão

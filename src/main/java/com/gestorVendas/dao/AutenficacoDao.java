@@ -31,7 +31,7 @@ public class AutenficacoDao {
         }
     }
 
-    public Usuario login(LoginDto login){
+    public  Usuario login(LoginDto login){
         Usuario usuario = usuarioDao.buscarUsuarioPeloUsuario(login.getUsuario());
         if(usuario == null || !usuario.isEstado()){
             return null;
