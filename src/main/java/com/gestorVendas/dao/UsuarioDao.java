@@ -87,10 +87,10 @@ public class UsuarioDao {
         usuario.setNome(result.getString("nome"));
         usuario.setUsuario(result.getString("usuario"));
         usuario.setSenha(result.getString("senha"));
-        usuario.setPerfil(result.getObject("perfil", Perfil.class));
+        usuario.setPerfil(Perfil.valueOf(result.getString("perfil")));
         usuario.setEstado(result.getBoolean("estado"));
-        usuario.setDataHoraCriacao(result.getObject("data hora criacao", LocalDateTime.class));
-        usuario.setUltimoLogin(result.getObject("ultimo login", LocalDateTime.class));
+        usuario.setDataHoraCriacao(result.getObject("data_hora_criacao", LocalDateTime.class));
+        usuario.setUltimoLogin(result.getObject("ultimo_login", LocalDateTime.class));
 
         return usuario;
     }
@@ -110,7 +110,7 @@ public class UsuarioDao {
     }
 
     public Usuario buscarUsuarioPeloUsuario(String usuario){
-        String sql = String.format("SELECT * FROM usuario WHERE id = '%s'", usuario);
+        String sql = String.format("SELECT * FROM usuario WHERE usuario = '%s'", usuario);
         try{
             ResultSet result = conexao.conectar().prepareStatement(sql).executeQuery();
             if(result.next()){

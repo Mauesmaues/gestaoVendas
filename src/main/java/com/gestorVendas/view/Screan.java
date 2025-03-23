@@ -1,58 +1,106 @@
 package com.gestorVendas.view;
 
-import javax.swing.*; // Importa a biblioteca Swing para criação da interface gráfica
+import com.gestorVendas.controller.LoginController;
+
+import javax.swing.*; // Importa a biblioteca Swing para criação da 'interface' gráfica
 import java.awt.*; // Importa classes para gerenciamento de layout
 import java.awt.event.ActionEvent; // Importa a classe para eventos de ação
-import java.awt.event.ActionListener; // Importa a interface para escutar eventos de ação
+import java.awt.event.ActionListener; // Importa a 'interface' para escutar eventos de ação
 
 // Classe Screan que herda de JFrame para criar uma janela gráfica
 public class Screan extends JFrame {
-    private JTextField campoUsuario; // Campo de texto para o usuário inserir o nome
+    private JTextField campoUsuario; // Campo de texto para o 'utilizador' inserir o nome
     private JPasswordField campoSenha; // Campo de senha para inserir a senha
-    private JButton botaoLogin; // Botão para acionar o login
+    private JButton botaoLogin; // Botão para acionar o 'login'
+    private LoginController controller;
+    private JButton botaoCancelar;
+    private JLabel loginMensagem;
 
-    // Construtor da classe Screan
-    public Screan() {
-        setTitle("Login"); // Define o título da janela
-        setSize(300, 500); // Define o tamanho da janela
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fecha a aplicação ao fechar a janela
-        setLocationRelativeTo(null); // Centraliza a janela na tela
-        setLayout(new GridLayout(3, 2, 5, 5)); // Define o layout da tela com uma grade de 3 linhas e 2 colunas
+        public Screan() {
+            setTitle("Login");
+            setSize(400, 300);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setLocationRelativeTo(null); // Centraliza a janela
+            setLayout(null); // Define layout nulo para personalização
+            this.controller = new LoginController(this);
+            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            setResizable(false);
 
-        JLabel labelUsuario = new JLabel("Usuário:"); // Rótulo para o campo de usuário
-        campoUsuario = new JTextField(); // Criação do campo de texto para entrada do usuário
-        JLabel labelSenha = new JLabel("Senha:"); // Rótulo para o campo de senha
-        campoSenha = new JPasswordField(); // Criação do campo de senha
-        botaoLogin = new JButton("Login"); // Criação do botão de login
+            // Título
+            JLabel titulo = new JLabel("Bem-vindo");
+            titulo.setFont(new Font("Arial", Font.BOLD, 24));
+            titulo.setBounds(130, 10, 200, 30); // Define a posição e o tamanho
 
-        // Adiciona um evento ao botão de login
-        botaoLogin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String usuario = campoUsuario.getText(); // Obtém o texto digitado no campo de usuário
-                String senha = new String(campoSenha.getPassword()); // Obtém a senha digitada
-            }
-        });
+            // Rótulo e campo de usuário
+            JLabel labelUsuario = new JLabel("Usuário:");
+            labelUsuario.setBounds(50, 70, 80, 25);
 
-        // Adiciona os componentes na tela
-        add(labelUsuario);
-        add(campoUsuario);
-        add(labelSenha);
-        add(campoSenha);
-        add(new JLabel()); // Espaço vazio para ajuste no layout
-        add(botaoLogin);
+            campoUsuario = new JTextField();
+            campoUsuario.setBounds(130, 70, 200, 25);
+
+            // Rótulo e campo de senha
+            JLabel labelSenha = new JLabel("Senha:");
+            labelSenha.setBounds(50, 110, 80, 25);
+
+            campoSenha = new JPasswordField(); // Troquei para JPasswordField
+            campoSenha.setBounds(130, 110, 200, 25);
+
+            // Botão de login
+            botaoLogin = new JButton("Login");
+            botaoLogin.setBounds(130, 160, 90, 30);
+            botaoLogin.setActionCommand("login");
+
+            // Botão de cancelar
+            botaoCancelar = new JButton("Cancelar");
+            botaoCancelar.setBounds(240, 160, 90, 30);
+            botaoCancelar.setActionCommand("cancelar");
+
+            // Mensagem de erro
+            loginMensagem = new JLabel();
+            loginMensagem.setForeground(Color.RED);
+            loginMensagem.setBounds(80, 200, 250, 25);
+
+            // Adicionando os componentes ao JFrame
+            add(titulo);
+            add(labelUsuario);
+            add(campoUsuario);
+            add(labelSenha);
+            add(campoSenha);
+            add(botaoLogin);
+            add(botaoCancelar);
+            add(loginMensagem);
+
+            // Configurações de fundo e estilo da tela
+            getContentPane().setBackground(new Color(220, 220, 220)); // Fundo cinza claro
+            eventos();
+        }
+
+
+    private void eventos(){
+        botaoLogin.addActionListener(controller);
+        botaoCancelar.addActionListener(controller);
+
     }
+
     public JTextField getCampoUsuario() {
         return campoUsuario;
     }
 
     // Método para obter o campo de senha
-    public JPasswordField getCampoSenha() {
+    public JTextField getCampoSenha() {
         return campoSenha;
     }
 
     public JButton getBotaoLogin() {
         return botaoLogin;
+    }
+
+    public JButton getBotaoCancelar() {
+        return botaoCancelar;
+    }
+
+    public JLabel getLoginMensagem() {
+        return loginMensagem;
     }
 }
 

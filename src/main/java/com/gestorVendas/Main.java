@@ -11,7 +11,8 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        new Screan();
+        Screan screen = new Screan();
+        screen.setVisible(true);
         String sql = "Select * from categoria"; // codigo sql para ser inserido
 
         ConexaoMysql conexao = new ConexaoMysql(); // instancia da conexão
