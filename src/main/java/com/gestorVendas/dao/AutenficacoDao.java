@@ -1,6 +1,5 @@
 package com.gestorVendas.dao;
 
-import com.gestorVendas.controller.LoginDto;
 import com.gestorVendas.model.Perfil;
 import com.gestorVendas.model.Usuario;
 import com.gestorVendas.service.NegocioException;
