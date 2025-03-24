@@ -25,8 +25,8 @@ public class CadastroClienteDao {
 
         Cliente clienteTemp = buscarPeloCliente(cliente.getNome());
         if (clienteTemp != null) {
-            //return String.format("Error: cliente %s ja existe no banco de dados", cliente.getNome());
             mensagemError.setText("Usuário já cadastrado!");
+            return String.format("Error: cliente %s ja existe no banco de dados", cliente.getNome());
         }
         try{
             PreparedStatement preparedStatement = conexao.conectar().prepareStatement(sql);
