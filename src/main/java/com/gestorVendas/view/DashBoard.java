@@ -1,6 +1,8 @@
 package com.gestorVendas.view;
 
 
+import com.gestorVendas.controller.CadastrarController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -53,6 +55,8 @@ import java.awt.event.ActionListener;
 
             painelDireito.add(painelHome, "Home");
             painelDireito.add(painelProdutos, "Produtos");
+            PainelFuncCliente painelController = new PainelFuncCliente();
+            painelClientes.add(painelController);
             painelDireito.add(painelClientes, "Clientes");
             painelDireito.add(painelVendas, "Vendas");
             painelDireito.add(painelUsuarios, "Usuários");
@@ -95,4 +99,5 @@ import java.awt.event.ActionListener;
             CardLayout cl = (CardLayout) painelDireito.getLayout();
             cl.show(painelDireito, nomeDoPainel);
         }
+
     }
