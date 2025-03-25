@@ -21,7 +21,7 @@ public class ClienteDao extends JFrame {
         setTitle("Login");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // Centraliza a janela
+        setLocationRelativeTo(null);
         setLayout(null); // Define layout nulo para personalização
         //setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -53,7 +53,7 @@ public class ClienteDao extends JFrame {
 
         mensagemError = new JLabel();
         mensagemError.setBounds(130, 225, 200, 25);
-        mensagemError.setForeground(Color.red);
+        mensagemError.setForeground(Color.yellow);
 
 
         add(labelNome);
