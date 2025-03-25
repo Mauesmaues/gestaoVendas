@@ -3,6 +3,7 @@ package com.gestorVendas.controller;
 import com.gestorVendas.dao.AutenficacoDao;
 import com.gestorVendas.dao.LoginDto;
 import com.gestorVendas.model.Usuario;
+import com.gestorVendas.service.Sessao;
 import com.gestorVendas.view.DashBoard;
 import com.gestorVendas.view.Screan;
 
@@ -46,7 +47,7 @@ public class LoginController implements ActionListener {
         LoginDto loginDto = new LoginDto(usuario, senha);
 
         Usuario usuarioTemp = this.AutentificacaoDao.login(loginDto);
-
+        Sessao.setUsuarioLogado(usuarioTemp);
         if(usuarioTemp != null){
             JOptionPane.showMessageDialog(null, usuarioTemp.getNome());
             DashBoard dashboard = new DashBoard();
