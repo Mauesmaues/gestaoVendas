@@ -14,7 +14,8 @@ import java.awt.event.ActionListener;
 
 public class CadastrarController implements ActionListener {
     private final PainelFuncCliente cadastrar;
-    private AutenficacoDao AutentificacaoDao;
+    private  AutenficacoDao AutentificacaoDao;
+
     public CadastrarController (PainelFuncCliente cadastrar) {
         this.cadastrar = cadastrar;
         this.AutentificacaoDao = new AutenficacoDao();
