@@ -47,7 +47,6 @@ public class LoginController implements ActionListener {
         LoginDto loginDto = new LoginDto(usuario, senha);
 
         Usuario usuarioTemp = this.AutentificacaoDao.login(loginDto);
-        Sessao.setUsuarioLogado(usuarioTemp);
         if(usuarioTemp != null){
             JOptionPane.showMessageDialog(null, usuarioTemp.getNome());
             DashBoard dashboard = new DashBoard();

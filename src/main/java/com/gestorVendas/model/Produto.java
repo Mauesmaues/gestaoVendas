@@ -1,5 +1,7 @@
 package com.gestorVendas.model;
 
+import com.gestorVendas.service.Sessao;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 

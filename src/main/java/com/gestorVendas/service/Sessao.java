@@ -5,7 +5,8 @@ import com.gestorVendas.model.Usuario;
 public class Sessao {
     private static Usuario usuarioLogado;
 
-    public static void setUsuarioLogado(Usuario usuario) {
+    public static void setUsuarioLogado(Usuario usuario)
+    {
         usuarioLogado = usuario;
     }
 

@@ -3,6 +3,7 @@ package com.gestorVendas.dao;
 import com.gestorVendas.model.Perfil;
 import com.gestorVendas.model.Usuario;
 import com.gestorVendas.service.NegocioException;
+import com.gestorVendas.service.Sessao;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.swing.*;
@@ -36,6 +37,7 @@ public class AutenficacoDao {
             return null;
         }
         if(usuario.isEstado() && validaSenha(usuario.getSenha(), login.getSenha())){
+            Sessao.setUsuarioLogado(usuario);
             return usuario;
         }
         return null;
