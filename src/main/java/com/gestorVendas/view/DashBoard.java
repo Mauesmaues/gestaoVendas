@@ -1,6 +1,7 @@
 package com.gestorVendas.view;
 
 
+import com.gestorVendas.componentes.PainelDeComandoProduto;
 import com.gestorVendas.controller.CadastrarController;
 
 import javax.swing.*;
@@ -54,6 +55,8 @@ import java.awt.event.ActionListener;
             JPanel painelUsuarios = criarPainel("Gestão de Usuários");
 
             painelDireito.add(painelHome, "Home");
+            PainelDeComandoProduto painelControllerProduto = new PainelDeComandoProduto();
+            painelProdutos.add(painelControllerProduto);
             painelDireito.add(painelProdutos, "Produtos");
             PainelFuncCliente painelController = new PainelFuncCliente();
             painelClientes.add(painelController);

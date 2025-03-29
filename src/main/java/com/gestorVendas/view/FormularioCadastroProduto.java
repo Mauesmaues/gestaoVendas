@@ -15,14 +15,17 @@ public class FormularioCadastroProduto extends JFrame {
     private JComboBox<String> categoria;
     private JLabel ErrorMensagem;
     private JButton saveButton;
+    private JButton cancelButton;
     CadastrarProdutoController controller;
     public FormularioCadastroProduto() {
         // Configuração do frame
         setTitle("Cadastro de Produto");
         setSize(450, 350);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         controller = new CadastrarProdutoController(this);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         // Painel central para o formulário
         JPanel formPanel = new JPanel();
@@ -80,7 +83,8 @@ public class FormularioCadastroProduto extends JFrame {
         JPanel buttonPanel = new JPanel(new FlowLayout());
         saveButton = new JButton("Salvar");
         JButton clearButton = new JButton("Limpar");
-        JButton cancelButton = new JButton("Cancelar");
+        cancelButton = new JButton("Cancelar");
+        cancelButton.setActionCommand("cancelar");
         saveButton.setActionCommand("cadastrar");
 
         // Adicionando botões ao painel
@@ -96,6 +100,7 @@ public class FormularioCadastroProduto extends JFrame {
 
     public void eventos(){
         saveButton.addActionListener(controller);
+        cancelButton.addActionListener(controller);
     }
 
     public JTextField getNome() {
@@ -122,10 +127,5 @@ public class FormularioCadastroProduto extends JFrame {
         return ErrorMensagem;
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new FormularioCadastroProduto().setVisible(true);
-        });
-    }
 }
 

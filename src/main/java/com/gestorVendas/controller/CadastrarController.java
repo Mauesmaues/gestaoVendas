@@ -33,6 +33,4 @@ public class CadastrarController implements ActionListener {
         ClienteDao clienteDao = new ClienteDao();
         clienteDao.setVisible(true);
     }
-
-
 }

@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 
 public class CadastrarProdutoController implements ActionListener {
 
-    private final FormularioCadastroProduto cadastroProduto;
+    private FormularioCadastroProduto cadastroProduto;
 
     public CadastrarProdutoController (FormularioCadastroProduto produto) {
         this.cadastroProduto = produto;
@@ -53,8 +53,11 @@ public class CadastrarProdutoController implements ActionListener {
         }else {
             switch (acao) {
                 case "cadastrar":
-                    System.out.println("Realizando cadastro de categoria");
+                    System.out.println("Realizando cadastro de produto");
                     cadastrar(nome, descricao, preco, quantidade, categoria);
+                    break;
+                case "cancelar":
+                    cancelar();
                     break;
             }
         }
@@ -91,5 +94,9 @@ public class CadastrarProdutoController implements ActionListener {
         categoria.setDescricao(result.getString("descricao"));
 
         return categoria;
+    }
+
+    private void cancelar(){
+            cadastroProduto.setVisible(false);
     }
 }
