@@ -9,7 +9,7 @@ public class botaoCadastrarCategoria extends JButton {
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createLineBorder(Color.black));
         setBackground(Color.magenta);
-        setPreferredSize(new Dimension(100, 50));
+        setPreferredSize(new Dimension(160, 50));
         setText("Cadastrar Categoria");
 
     }

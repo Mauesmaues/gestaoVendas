@@ -12,7 +12,9 @@ public class PainelDeComandoProduto extends JPanel {
         setLayout(new FlowLayout());
         setPreferredSize(new Dimension(300, 200)); // Tamanho ajustado
         botaoCadastrarProduto botaoCadastrarProduto = new botaoCadastrarProduto();
+        botaoCadastrarCategoria botaoCadastrarCategoria = new botaoCadastrarCategoria();
         add(botaoCadastrarProduto);
+        add(botaoCadastrarCategoria);
         botaoCadastrarProduto.addActionListener(controller);
     }
 }
