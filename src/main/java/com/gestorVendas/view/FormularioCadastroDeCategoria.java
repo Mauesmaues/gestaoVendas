@@ -17,7 +17,7 @@ public class FormularioCadastroDeCategoria extends JFrame {
 
     private CategoriaController controller;
 
-       FormularioCadastroDeCategoria() {
+       public FormularioCadastroDeCategoria() {
             setTitle("Cadastro de Categoria");
             setSize(400, 250);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
