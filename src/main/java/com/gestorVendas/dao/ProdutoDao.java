@@ -58,7 +58,8 @@ public class ProdutoDao {
                 throw new IllegalArgumentException("Categoria inválida para o produto.");
             }
             //System.out.println(Sessao.getUsuarioLogado().getNome());
-            preparedStatement.setLong(6, 1);
+            Long idUser = buscarPeloUSuario(Sessao.getUsuarioLogado().getNome());
+            preparedStatement.setLong(6, idUser);
             preparedStatement.setTimestamp(7, java.sql.Timestamp.valueOf(LocalDateTime.now()));
         }
 

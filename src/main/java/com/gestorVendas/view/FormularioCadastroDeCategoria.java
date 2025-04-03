@@ -77,9 +77,4 @@ public class FormularioCadastroDeCategoria extends JFrame {
            cadastrar.addActionListener(controller);
         }
 
-
-        public static void main(String[] args) {
-           FormularioCadastroDeCategoria frame = new FormularioCadastroDeCategoria();
-           frame.setVisible(true);
-        }
     }
