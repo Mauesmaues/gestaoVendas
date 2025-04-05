@@ -9,6 +9,7 @@ import com.gestorVendas.service.Sessao;
 import com.gestorVendas.util.ConexaoMysql;
 import com.gestorVendas.view.FormularioCadastroDeCategoria;
 import com.gestorVendas.view.FormularioCadastroProduto;
+import com.gestorVendas.view.Screan;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
